@@ -23,6 +23,5 @@ def convert_to_text(morse_code, morse_dict):
     list_of_codes = morse_code.split()
     converted_code = ""
     for code in list_of_codes:
-        converted_code += list(morse_dict.keys()
-                               )[list(morse_dict.values()).index(code)]
+        converted_code += list(morse_dict.keys())[list(morse_dict.values()).index(code)]
     return converted_code
