@@ -1,6 +1,7 @@
 import tkinter
 from tkinter import *
-from convert_morse import convert_to_morse, convert_to_text
+from tkinter import messagebox
+from convert_morse import text_to_morse, morse_to_text
 import pyperclip
 
 
@@ -53,13 +54,18 @@ class Interface:
 
     def convert(self):
         if self.mode.get() == 'text':
-            converted_text = convert_to_morse(self.text.get())
+            converted_text = text_to_morse(self.text.get())
             self.result_canvas.itemconfig(
                 self.result, text=f"{converted_text}")
         elif self.mode.get() == 'morse':
-            converted_text = convert_to_text(self.text.get())
-            self.result_canvas.itemconfig(
-                self.result, text=f"{converted_text}")
+            try:
+                converted_text = morse_to_text(self.text.get())
+            except:
+                messagebox.showerror(
+                    title="Error", message="Entered text has non morse code elements.\nPlease, enter valid code")
+            else:
+                self.result_canvas.itemconfig(
+                    self.result, text=f"{converted_text}")
 
 
 app = Interface()

@@ -10,19 +10,19 @@ morse_dict = {
 }
 
 
-def convert_to_morse(text):
+def text_to_morse(origin_text):
     converted_text = ""
-    for letter in text.upper():
+    for letter in origin_text.upper():
         if letter in morse_dict:
             converted_text += morse_dict[letter]
         converted_text += " "
     return converted_text[:-1]
 
 
-def convert_to_text(morse_code):
+def morse_to_text(morse_code):
     list_of_codes = morse_code.split()
     converted_code = ""
     for code in list_of_codes:
         converted_code += list(morse_dict.keys()
-                               )[list(morse_dict.values()).index(code)]
+                                   )[list(morse_dict.values()).index(code)]
     return converted_code
